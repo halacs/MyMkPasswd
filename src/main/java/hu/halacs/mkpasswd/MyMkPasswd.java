@@ -3,6 +3,7 @@ package hu.halacs.mkpasswd;
 import java.security.MessageDigest;
 import org.apache.commons.codec.digest.Crypt;
 import java.io.*;
+import java.security.SecureRandom;
 
 public class MyMkPasswd
 {
@@ -13,6 +14,9 @@ public class MyMkPasswd
 
     String plainPassword = "sporo";
     String salt = "4CN9XOLytKUV4SNf";
+
+    //String salt = generateSalt(16);
+    //System.out.println("Salt: " + salt);
     
     /*
     The exact algorithm depends on the format of the salt string:
@@ -47,6 +51,12 @@ public class MyMkPasswd
       System.out.println("We are good! :)");
     else
       System.out.println("Something fuckin' went wrong :'(");
+  }
+
+  public static String generateSalt(int size)
+  {
+    SecureRandom random = new SecureRandom();
+    return org.apache.commons.codec.binary.Base64.encodeBase64String(random.generateSeed(size*2)).substring(0, size);
   }
 
 }
