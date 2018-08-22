@@ -31,7 +31,7 @@ public class MyMkPasswd
 
     System.out.println("Our hash: " + hashedPassword);
 
-    // Validate our password recently generated password hash with mkpasswd
+    // Validate our recently generated password hash with mkpasswd
     String referenceHash = "";
 
     try
